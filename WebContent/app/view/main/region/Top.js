@@ -36,16 +36,17 @@ Ext.define('app.view.main.region.Top', {
           }, {
             text : '帮助'
           }, {
-            text : '关于'
+            text : '关于',
+            glyph: 'xf129@FontAwesome'
           }, {
-            text : '注销'
+            text : '注销',
+            glyph: 'xf08b@FontAwesome'
           },'->','->', {
             text : '搜索',
-            glyph : 'f002@My Font Family'
-//            iconCls: 'fa-search'
-            
+            glyph : 'xf002@FontAwesome'    //这是FonAwesome 图标的格式 x代替源码中的\ (如 \f002 ==>xf002)    
           }, {
-            text : '设置'
+            text : '设置',
+            glyph: 'xf013@FontAwesome'
           }]
 
     })
