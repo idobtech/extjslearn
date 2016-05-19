@@ -20,7 +20,8 @@ Ext.define('app.view.main.MainController', {
 
     onConfirm: function (choice) {
         if (choice === 'yes') {
-            //
+            this.getView().getViewModel().set('name',"修改后的title");
         }
+        
     }
 });
