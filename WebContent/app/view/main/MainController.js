@@ -22,6 +22,43 @@ Ext.define('app.view.main.MainController', {
         if (choice === 'yes') {
             this.getView().getViewModel().set('name',"修改后的title");
         }
-        
-    }
+    },
+    
+hiddenTopBottom : function() {
+    // 如果要操纵控件，最好的办法是根据相对路径来找到该控件，用down或up最好，尽量少用getCmp()函数。 获取View的子组件  this.View()是MainView
+    this.getView().down('maintop').hide();
+    this.getView().down('mainbottom').hide();
+    if (!this.showButton) { // 显示顶部和底部的一个控件，在顶部和底部隐藏了以后，显示在页面的最右上角
+        this.showButton = Ext.widget('component', {
+            glyph :  'xf0dd@FontAwesome',
+            view : this.getView(),
+            floating : true,
+            x : document.body.clientWidth - 32,
+            y : 10,
+            height : 20,
+            width : 26,
+            style : 'background-color:#cde6c7',
+             tooltip : '显示顶部和底部区域',
+            listeners : {
+                el : {  //给当前组件嵌入进Div中
+                    click : function(el) {
+                        var c = Ext.getCmp(el.target.id); // 取得component的id值
+                        
+                        c.view.down('maintop').show();
+                        c.view.down('mainbottom').show();
+                        c.hide();
+                    }
+                }
+            }
+        })
+    };
+    this.showButton.show();
+}
+
+// 如果窗口的大小改变了，并且顶部和底部都隐藏了，就要调整显示顶和底的那个控件的位置
+//onMainResize : function() {
+//    if (this.showButton && !this.showButton.hidden) {
+//        this.showButton.setX(document.body.clientWidth - 32);
+//    }
+//}
 });

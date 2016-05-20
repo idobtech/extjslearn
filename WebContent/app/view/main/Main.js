@@ -8,7 +8,12 @@
  */
 Ext.define('app.view.main.Main', {
       extend : 'Ext.container.Container',
-      requires : ['app.view.main.MainController', 'app.view.main.MainModel', 'app.view.main.region.Bottom', 'app.view.main.region.Top'],
+      requires : ['app.view.main.MainController', 
+      						'app.view.main.MainModel', 
+      						'app.view.main.region.Bottom', 
+      						'app.view.main.region.Top',
+      						'app.view.main.region.MainMenuToolbar'
+      						],
 
       xtype : 'app-main',
 
@@ -24,7 +29,10 @@ Ext.define('app.view.main.Main', {
       items : [{
             xtype : 'maintop',
             region : 'north'
-          }, {
+          },{
+   			 xtype: 'mainmenutoolbar',
+    		region: 'north' // 把他放在maintop的下面
+		}, {
             xtype : 'mainbottom',
             region : 'south'
           }, {
